@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <meta http-equiv="X-UA-Compatible" content="ie=edge">
+   <title>Página modelo</title>
+   <script>
+      'use strict'; // Modo "chato" do Javascript
+   
+   /*
+
+      Peça ao usuário para informar dois números e um dos seguintes operadores matemáticos:
+
+      + -> adição
+      - -> subtração
+      *, ., x ou X -> multiplicação
+      / ou : -> divisão
+
+      Utilizando a estrutura switch..case, verifique qual operação foi selecionada, 
+      efetue a operação e exiba o resultado com document.write().
+
+   */
+
+      let mat, num1, num2, result;
+
+         num1 = Number(prompt('Digite o primeiro número: '));
+         num2 = Number(prompt('Digite o segundo número: '));
+         mat = (prompt('Escolha uma operação matemática: + - * . x X / :'));
+
+         if (isNaN(num1)) {
+            alert('O valor digitado não é válido!!');
+         } else if (isNaN(num2)) {
+            alert('O valor digitado não é válido');
+         } else {
+            switch(mat) {
+               case '+':
+                  result = num1 + num2;
+                  break;
+               case '-':
+                  result = num1 - num2;
+                  break;
+               case '/':
+               case ':':
+                  result = num1 / num2;
+                  break;
+               case '*':
+               case '.':
+               case 'x':
+               case 'X':
+                  result = num1 * num2;
+                  break;
+               default:
+                  alert('A operação escolhida é inválida!!');
+            }
+            if (result != undefined) {
+            document.write(`Resultado de ${num1} ${mat} ${num2}: ${result}`);
+            }
+         }
+   
+   </script>
+</head>
+<body>
+   <h1>Título da página</h1>
+   <p>Parágrafo de texto</p>  
+</body>
+</html>
