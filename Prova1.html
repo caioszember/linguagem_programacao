@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <meta http-equiv="X-UA-Compatible" content="ie=edge">
+   <title>Página modelo</title>
+   <style>
+      div {
+         display: inline-block
+      }
+      label {
+         display: block
+        /*text-align: center*/
+      }
+      #resultado {
+         display: block
+      }
+
+   </style>
+</head>
+<body>
+   <h1>Prova 1</h1>
+   <p>Calculando a área de uma forma geométrica</p> 
+   
+   <div>
+      <label>1º Valor</label>
+      <input id="num1" type="number" value="0">
+   </div>
+
+   <div>
+      <label>2º Valor</label>
+      <input id="num2" type="number" value="0">
+   </div>
+
+   <div>
+      <label>Forma Geométrica</label>
+      <select id="forma">
+         <option>(Selecione)</option>
+         <option>Retângulo</option>
+         <option>Triângulo</option>
+         <option>Elipse</option>
+      </select>
+   </div>
+
+   <button id="calc">Calcular</button>
+
+   <div id="resultado"></div>
+
+   <script>
+      const elem_num1 = document.getElementById('num1')
+      const elem_num2 = document.getElementById('num2')
+      const elem_forma = document.getElementById('forma')
+      const elem_resultado = document.getElementById('resultado')
+      const elem_calc = document.getElementById('calc')
+
+   function calcular() {
+
+      let num1 = Number(elem_num1.value)
+      let num2 = Number(elem_num2.value)
+
+         let forma = elem_forma.selectedIndex
+
+         let resultado
+            switch(forma) {
+
+               case 1:
+                  if(isNaN(num1 || num2)) {
+                     alert("O valor digitado não é válido")
+                  }
+                     else if(num1 > num2) {
+                        resultado = num1 * num2
+                     }
+                     else {
+                        resultado = num2 * num1
+                  }
+                  break
+               
+               case 2:
+               if(isNaN(num1 || num2)) {
+                     alert("O valor digitado não é válido")
+                  }
+                     else if(num1 > num2) {
+                        resultado = (num1 * num2) / 2
+                     }
+                     else {
+                        resultado = (num2 * num1) / 2
+                  }
+                  break
+
+               case 3:
+                  if(isNaN(num1 || num2)) {
+                     alert("O valor digitado não é válido")
+                  }
+                     else if(num1 > num2) {
+                        resultado = (num1 * num2) * Math.PI
+                     }
+                     else {
+                        resultado = (num2 * num1) * Math.PI
+                  }
+                  break
+               
+               default:
+                  alert("Selecine uma opção válida!!")
+                  elem_forma.focus()
+            }
+
+         if (resultado != undefined) {
+            elem_resultado.innerText = `Resultado: ${resultado} `
+               }
+      }
+
+      elem_calc.addEventListener('click', calcular);
+
+      elem_num1.focus();
+      elem_num1.select()
+   
+   </script>
+   
+</body>
+</html>
