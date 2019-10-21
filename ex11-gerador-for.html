@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <meta http-equiv="X-UA-Compatible" content="ie=edge">
+   <title>Página modelo</title>
+   <style>
+      /* Só se aplica a labels que NÃP TÊM o atributo "for=" */
+      label:not([for]) {
+         display: block; /* Para ficar acima dos inputs */
+      }
+      /* Só se aplica a divs que NÃO TÊM "id=" */
+      div:not([id]) {
+         /*border: 1px solid red;*/
+         display: inline-block; /* Exibe as divs lado a lado */
+      }
+      input[type='radio'] {
+         margin-right: -3px; /* Sem o espaçamento à direita do botão de rádio */
+      }
+   
+   </style>
+</head>
+<body>
+   <h1>Gerador de <em>loop for</em></h1>
+   <p>Informe os parâmetros e clique sobre o botão Gerar.</p>  
+
+   <div>
+      <label>Início</label>
+      <input id='inicio' type='number'>
+   </div>
+
+   <div>
+      <label>Fim</label>
+      <input id='fim' type='number'>
+   </div>
+
+   <div>
+      <label>Passo</label>
+      <input id='passo' type='number'>
+   </div>
+
+   <div>
+      <!-- Todos os inputs radio de um mesmo grupo 
+         de opções precisam ter o mesmo atriburo "name"-->
+      <input id='asc' type='radio' name='ordem' checked>
+      <label for='asc'>Ascendente</label>
+
+      <input id='desc' name='ordem' type='radio'>
+      <label for='desc'>Descendente</label>
+   </div>
+
+   <div>
+      <button id='gerar'>Gerar</button>
+   </div>
+
+   <div id='resultado'></div>
+
+   <script>
+         'use strict'; // Modo "chato" do Javascript
+
+         // Captura dos elementos
+         const elemInicio = document.getElementById('inicio')
+         const elemFim = document.getElementById('fim')
+         const elemPasso = document.getElementById('passo')
+
+         const elemAsc = document.querySelector('#asc')
+         const elemDesc = document.querySelector('#desc')
+
+         const elemGerar = document.querySelector('#gerar')
+         const elemResultado = document.querySelector('#resultado')
+
+         function gerar() {
+
+            // CAPTURA DOS VALORES DOS ELEMENTOS
+            let inicio = parseInt(elemInicio.value);
+            let fim = parseInt(elemFim.value);
+            let passo = parseInt(elemPasso.value);
+
+            let asc = elemAsc.checked; // True ou false
+
+            // NÃO SE ESQUEÇA DE LIMPAR A DIV DE RESULTADOS
+            // ANTES DE EXIBIR OUTRO RESULTADO
+            elemResultado.innerText = '';
+
+            let desc = elemDesc.checked
+
+         }
+         elemGerar.addEventListener('click', gerar)
+      
+      </script>
+
+</body>
+</html>

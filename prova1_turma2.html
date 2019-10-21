@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <meta http-equiv="X-UA-Compatible" content="ie=edge">
+   <title>Página modelo</title>
+     
+   
+</head>
+<body>
+   <h1>Cálculo de raizes de equações do 2º grau</h1>
+
+   <label>Valor de A</label>
+   <input id='a' type='number'>
+
+   <label>Valor de B</label>
+   <input id='b' type='number'>
+
+   <label>Valor de C</label>
+   <input id='c' type='number'>
+
+   <button id='calcular'>Calcular</button>
+
+   <div id='resultado'></div>
+
+   <script>
+      'use strict'; // Modo "chato" do Javascript
+   
+      const elemA = document.getElementById('a')
+      const elemB = document.getElementById('b')
+      const elemC = document.getElementById('c')
+      const elem_calc = document.getElementById('calcular')
+      const elem_resultado = document.getElementById('resultado')
+
+      function calcular() {
+
+         let a = Number(elemA.value)
+         let b = Number(elemB.value)
+         let c = Number(elemC.value)
+
+         let delta = b ** 2 - 4 * a * c
+
+         if (delta > 0) {
+            let x1 = (-b + Math.sqrt(delta)) / (2 * a)
+            let x2 = (-b - Math.sqrt(delta)) / (2 * a)
+
+            elem_resultado.innerText = `Raízes: x' = ${x1}, x" = ${x2}`
+         }
+         else if (delta == 0) {
+            let x = - b / (2 * a)
+
+            elem_resultado.innerText = `Raíz: x = ${x}`
+         }
+         else {
+            elem_resultado.innerText = 'NÃO HÁ RAÍZES REAIS POSSÍVEIS!!'
+         }
+      }
+
+      elem_calc.addEventListener('click', calcular)
+
+   </script>
+
+</body>
+</html>
