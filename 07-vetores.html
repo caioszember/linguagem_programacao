@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <meta http-equiv="X-UA-Compatible" content="ie=edge">
+   <title>Página modelo</title>
+   <script>
+      'use strict'; // Modo "chato" do Javascript
+
+      // Modo antigo
+      var primos = Array(2, 3, 5, 7, 11);
+      // Modo moderno
+      let pares = [0, 2, 4, 6, 8, 10];
+      // Vetor vazio
+      let vazio1 = Array();
+      let vazio2 = [];
+      // Acrescentando novos elementos a um vetor: push()
+      // push() acrescenta NO FINAL DO VETOR
+      primos.push(13);
+      pares.push(12);
+      vazio1.push('inglês');
+      
+      // Acrescentando novos elementos NO INÍCIO: unshift()
+      primos.unshift(1);
+      pares.unshift(-2);
+      vazio1.unshift('português');
+      vazio2.unshift('Fusca');
+      
+      // Tirando elementos DO FINAL: pop()
+      let num1 = primos.pop();
+      let num2 = pares.pop();
+      // Tirando elementos DO INÍCIO: shift()
+      let num3 = primos.shift();
+      let num4 = pares.shift();
+      console.log(primos);
+      console.log(pares);
+      console.log(vazio1);
+      console.log(vazio2);
+      console.log(num1);
+      console.log(num2);
+      console.log(num3);
+      console.log(num4);
+       // Obtendo o número de elementos do vetor: length
+       console.log('nº de elementos de primos: ' + primos.length);
+       console.log('nº de elementos de pares: ' + pares.length);
+       console.log('nº de elementos de vazio1: ' + vazio1.length);
+       console.log('nº de elementos de vazio2: ' + vazio2.length);
+       // Acessando o SEGUNDO elemento do vetor vazio1
+       console.log(vazio1[1]); // A posição é sempre UMA casa menor
+       // Trocando o conteúdo do PRIMEIRO elemento de vazio1
+       vazio1[0] = 'espanhol';
+       console.log(vazio1);
+       // PERCURSO DE VETOR
+       // Em um for tradicional, o contador deve iniciar em 0
+       // e terminar ANTES de atingir o valor de length
+       for(let i = 0; i < primos.length; i++) {
+          document.write(primos[i] + '<br>');
+       }
+       // Traço separador
+       document.write('<hr>');
+       // PERCURSO INVERSO DO VETOR
+       // O contador sempre inicia em length - 1 e vai até
+       // zero (inclusive)
+       for(let x = pares.length - 1; x >= 0; x--) {
+         document.write(pares[x] + '<br>');
+       }
+       // Traço separador
+       document.write('<hr>');
+       // PERCURSO ASCENDENTE COM for...of
+       // let -> qualquer variável
+       // depois do of: o nome do vetor que será percorrido
+       for(let primo of primos) {
+          document.write(primo + '<br>');
+       }
+       // Consultando se um valor existe dentro do vetor: indexOf()
+       // Retorno >= 0: elemento existe
+       // Retorno < 0: elemento NÃO existe
+       
+       // Retorna 1 (a posição do elemento)
+       console.log(vazio1.indexOf('inglês')); 
+       
+       // Retorna 0 (a posição do elemento)
+       console.log(vazio1.indexOf('espanhol')); 
+       
+       // Retorna -1 (não existe no vetor)
+       console.log(vazio1.indexOf('francês')); 
+       // OUTRA FORMA DE CONSULTAR SE UM ELEMENTO EXISTE: includes()
+       // Só funciona em navegadores após 2016 (ES7+)
+       console.log(vazio1.includes('espanhol')); // Retorna true
+       console.log(vazio1.includes('francês')); // Retorna false
+       // ACRESCENTANDO ELEMENTOS NO MEIO DO VETOR: splice()
+       // Argumentos:
+       // 1º: a posição em que o novo elemento será inserido
+       // 2º: quantos elementos serão apagados
+       // 3º: o novo elemento
+       primos.splice(2, 0, 17);
+       vazio1.splice(1, 0, 'alemão');
+       console.log(primos);
+       console.log(vazio1);
+       // Retirando elementos do MEIO do vetor: splice() (de novo!)
+       // Argumentos:
+       // 1º: a posição da qual o elemento será retirado
+       // 2º: quantos elementos serão apagados
+       // OBS: SEMPRE retornará um vetor
+       let num5 = primos.splice(4, 1);
+       let num6 = pares.splice(2, 2);
+       console.log(num5[0]); // Acessando o primeiro (e único) elemento do vetor
+       console.log(num6);
+       console.log(primos);
+       console.log(pares);
+   
+   </script>
+</head>
+<body>
+   <h1>Título da página</h1>
+   <p>Parágrafo de texto</p>  
+</body>
+</html>

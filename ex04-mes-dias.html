@@ -8,7 +8,7 @@
    <script>
       'use strict'; // Modo "chato" do Javascript
    
-   let mes, dias;
+   let mes;
 
       mes = parseInt(prompt('Informe um número referente ao mês: '));
 
@@ -16,14 +16,14 @@
       alert('O número informado não é válido!!');
    } else if (mes < 1 || mes > 12) {
       alert('O número informado deve estar entre 1 e 12!!');
-   } else if ((mes == 1) || (mes = 3) || (mes == 5) || (mes == 7) || (mes == 8) || (mes == 10) || (mes == 12) {
+   } else if ((mes == 1) || (mes = 3) || (mes == 5) || (mes == 7) || (mes == 8) || (mes == 10) || (mes == 12)) {
       alert('O mês informado possui 31 dias!!');
    } else if ((mes == 4) || (mes == 6) || (mes == 9) || (mes == 11)) {
       alert('O mês informado possui 30 dias!!');
    } else {
       alert('O mês informado possui 28 dias!!');
    }
-}
+
       //CASE (1) = alert('')
 
    </script>
