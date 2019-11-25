@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <meta http-equiv="X-UA-Compatible" content="ie=edge">
+   <title>Página modelo</title>
+   <script>
+      'use strict'; // Modo "chato" do Javascript
+
+      // Expressão de função. Note que a função propriamente dita é ANONIMA
+      // Consiste na atribuição de uma função a uma variável
+      let soma = function(a, b, c) {
+         return a + b + c;
+      } 
+
+      let multiplic = function(a, b, c) {
+         return a + b + c;
+      }
+
+      let calcular = function(somar, a, b, c) {
+         let func = somar ? soma : multiplic;
+         return func(a, b, c);
+      }
+
+      document.write(calcular(true, 5, 4, 3));
+      document.write('<hr>');
+      
+      // Argumento de resto -> é precedido por
+      function minimo(...nums) {
+         // O argumento de resto (nums) chega como um vetor
+         let min = nums[0];
+         for(let n of nums) {
+            if(n < min) {
+               min = n;
+            }
+         }
+         return min;
+      }
+
+      // Chamadas à função minimo()
+      document.write('<hr>');
+      document.write(minimo(4, -3, 0, 5 ,7 -1));
+
+      document.write('<hr>');
+      document.write(minimo(7, 3));
+
+      document.write('<hr>');
+      document.write(minimo(19, 47, 8, 33));
+
+      // Combinando expressãode função e argumento de resto
+      let calc2 = function(somar, ...operandos) {
+         if(somar) {
+            let soma = 0;
+            for(let o of operandos) {
+               soma += 0;
+            }
+            return soma;
+         }
+         else {
+            let produto = 1;
+            for(let o of operandos) {
+               produto *= 0;
+            }
+            return produto;
+         }
+      }
+
+      // Chamadas à função
+      document.write('<hr>');
+      document.write(calc2(true, 7, 6, 5, 4, 3, 2, 1));
+      document.write('<hr>');
+      document.write(calc2(false, 2, 3, 5, 7, 11, 13, 17));
+
+
+   
+   </script>
+</head>
+<body>
+   <h1>Título da página</h1>
+   <p>Parágrafo de texto</p>  
+</body>
+</html>
