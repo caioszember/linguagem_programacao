@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <meta http-equiv="X-UA-Compatible" content="ie=edge">
+   <title>Página modelo</title>
+   <style>
+      body {
+         background-image: linear-gradient(royalblue,indigo);
+         background-color: indigo;
+         background-repeat: no-repeat;
+      }
+      section {
+         background: white;
+         width: 70%;
+         margin: 50px auto;
+         height: auto;
+         padding: 20px;
+         border-radius: 20px;
+         box-shadow: 5px 5px 10px #888;
+      }
+      h1 {
+         text-shadow: 2px 2px 2px #888;
+      }
+      div {
+         padding: 20px;
+      }
+      label {
+         display: block;
+      }
+      button {
+         padding: 10px;
+      }
+      #visualizar {
+         background: mediumblue;
+         color: white;
+         
+      }
+      #relatorio {
+         background:moccasin;
+         padding: 20px;
+         border-radius: 10px;
+         clear: both;
+      }
+   </style>
+   
+</head>
+<body>
+   <section>
+      <h1>Cadastro de produtos</h1>
+      
+      <div>
+         <label>Nome do produto</label>
+         <input id="nomeProd" size="50">
+      </div>
+
+      <div>
+         <label>Quantidade</label>
+         <input id="quantidade" type="number">
+      </div>
+
+      <div>
+         <label>Preço unitário</label>
+         <input id="precoUnit" type="number" step="0.01">
+      </div>
+
+      <div>
+         <button id="salvar">Salvar</button>
+      </div>
+
+      <div>
+         <button id="visualizar">Visualizar</button>
+      </div>
+
+      <div id="relatorio">
+         
+      </div>
+   </section>   
+
+   <script>
+      'use strict'; // Modo "chato" do Javascript
+      /*
+      
+         1) Capture os elementos do HTML com getElementById() ou querySelector().
+
+         */
+         const elemProduto = document.querySelector('#nomeProd');
+         const elemQuantidade = document.querySelector('#quantidade');
+         const elemPreco = document.querySelector('#precoUnit');
+
+         const elemSalvar = document.querySelector('#salvar');
+         const elemVisu = document.querySelector('#visualizar');
+         const elemRelat = document.querySelector('#relatorio');
+         
+
+        /*
+         2) Declare um vetor vazio.
+         */
+
+         let loja = [];
+
+         /*
+         3) Crie uma função que leia o conteúdo dos input e crie um objeto para armazenar
+            as informações coletadas. Esse objeto deve ser acrescentado ao vetor criado
+            no passo 2. Após isso, limpe os inputs e ponha o foco no primeiro deles.
+            Essa função deve ser atribuída ao evento 'click' do botão Salvar.
+*/
+
+         function bota () {
+            let elemprod = String(elemProduto.value);
+            let elemquan = Number(elemQuantidade.value);
+            let elemprec = Number(elemPreco.value);
+
+            if(elemprod.trim().length < 3){
+               alert('Nome do produto inválido!!!');
+               elemProduto.focus();
+               
+            }
+            
+            if(isNaN(elemquan) || elemquan <= 0){
+               alert('Quantidade inválida!!!');
+               elemQuantidade.focus();
+               
+            }
+
+            if(isNaN(elemprec) || elemprec <= 0){
+               alert('Preço unitário inválido!!!');
+               elemPreco.focus();
+               
+            }
+            // Criação de objeto vazio
+            let objeto = {}; 
+
+            objeto.produto = elemprod;
+            objeto.quant = elemquan;
+            objeto.preco = elemprec;
+
+            // Acrescentando o objeto ao vetor 'produtos', declarado fora da função
+            loja.push(objeto);
+
+            // Limpeza do conteúdo dos campos
+            elemProduto.value = '';
+            elemQuantidade.value = '';
+            elemPreco.value = '';
+
+            // Foca no primeiro elemento
+            elemProduto.focus();
+
+            console.log(loja);
+         }  
+
+         elemSalvar.addEventListener('click', bota);
+
+/*
+         4) Crie outra função. Limpe o conteúdo da div de relatório, e em seguida percorra 
+            o vetor criado no passo 2 e, para cada elemento dentro dele, exibir o nome do 
+            produto, a quantidade, o valor unitário e o valor total, dentro da div de relatório.
+            Para exibir essas informações, crie um elemento <p> para cada produto.
+            Essa função deve ser atribuída ao evento 'click' do botão visualizar.
+      */
+
+      function visualizar() {
+
+         // Limpando a div do relatório
+         elemRelat.innerHTML = '';
+
+         // Percorrendo o vetor de produtos da forma tradicional
+         let info = '';
+         let parag, traco;
+
+         for(let i = 0; i < loja.length; i++) {
+            info = 'Nome do produto: ' + loja[i].produto + '<br>';
+            info += 'Quantidade: ' + loja[i].quant + '<br>';
+            info += 'Preço unitário: ' + loja[i].preco + '<br>';
+            info += 'Preço total: ' + (loja[i].quant * loja[i].preco);
+
+            parag = document.createElement('p');
+
+            // innerHTML porwue info tem elementos <br>
+            parag.innerHTML = info;
+
+            // Acrescentando o parágrafo à div relatório
+            elemRelat.appendChild(parag);
+
+            // Traço separador
+            traco = document.createElement('hr');
+            elemRelat.appendChild(traco);
+         }
+      }
+
+      elemVisu.addEventListener('click', visualizar);
+   </script>
+</body>
+</html>
