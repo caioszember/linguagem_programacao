@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <meta http-equiv="X-UA-Compatible" content="ie=edge">
+   <title>Página modelo</title>
+   <script>
+      'use strict'; // Modo "chato" do Javascript
+      // Armazenando dados de pessoas em vetores
+      let pessoa1 = [
+         'Maria da Feira',
+         98412154211,
+         'maria@feira.com.br'
+      ];
+      let pessoa2 = [
+         'João Melão',
+         44455566677,
+         'joaomelao@feira.com.br'
+      ];
+      // Exibindo os documentos das pessoas. É necessário
+      // lembrar que eles estão na posição 1
+      alert(pessoa1[1]);
+      alert(pessoa2[1]);
+      // Objetos em sentido estrito
+      let pessoa3 = {}; // Objeto vazio
+      // Alternativa: let pessoa3 = Object();
+      // Em um objeto, as posições têm NOMES, não números
+      pessoa3.nome = 'Joana Josefa';
+      // O nome da posição tem espaços, precisa ser entre colchetes
+      pessoa3['documento de identidade'] = 11122233344;
+      pessoa3.email = 'joanaj@gmail.com';
+      // Criação de objeto já com valores
+      let pessoa4 = {
+         email: 'sebastiaoc@hotmail.com',
+         nome: 'Sebastião das Couves',
+         // O uso de aspas no nome das propriedades é opcional,
+         // EXCETO se o nome tiver espaços
+         'documento de identidade': 5556667788
+      };
+      // Nos objetos, os nomes das posições são chamadas PROPRIEDADES.
+      // Note que, nos exemplos anteriores, em cada um dos objetos, as
+      // propriedades foram colocadas em ordens diferentes.
+      // Exibindo os dois objetos no console
+      console.log(pessoa3);
+      console.log(pessoa4);
+      // Exibindo os nomes das pessoas 3 e 4
+      document.write(pessoa3.nome); // Forma mais comum
+      document.write('<br>');
+      document.write(pessoa4['nome']); // Menos comum, mas possível
+      // Exibindo os documentos de identidade das pessoas 3 e 4
+      // Tem espaços, então a sintaxe dos [] é obrigatória
+      document.write(pessoa3['documento de identidade']); 
+      document.write('<br>');
+      document.write(pessoa4['documento de identidade']); 
+      // CRIAÇÃO DE PROPRIEDADES
+      // A criação de uma propriedade é simples: basta
+      // dar um valor a ela
+      pessoa3.apelido = 'Joaninha';
+      pessoa4.idade = 44;
+      pessoa3.temCarro = true;
+      console.log(pessoa3);
+      console.log(pessoa4);
+      document.write('<hr>');
+      
+      // Exibindo um objeto com todas as suas propriedades
+      for(let prop in pessoa3) { // prop passa a ter o nome da propriedade
+         // A sintaxe do [] precisa ser usada nesse caso porque:
+         // 1) O nome da propriedade na variável "prop" é uma string
+         // 2) O nome da propriedade PODE conter espaços
+         document.write(prop + ': ' + pessoa3[prop] + '<br>');
+      }
+      document.write('<hr>');
+      for(let prop in pessoa4) { // prop passa a ter o nome da propriedade
+         document.write(prop + ': ' + pessoa4[prop] + '<br>');
+      }
+   </script>
+</head>
+<body>
+   <h1>Título da página</h1>
+   <p>Parágrafo de texto</p>  
+</body>
+</html>
