@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <meta http-equiv="X-UA-Compatible" content="ie=edge">
+   <title>PROVA 02</title>
+   <style>
+      * {
+         font-family:'Calibri', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+         font-size: 12pt;
+      }
+      html, body {
+         position: absolute;
+         height: 100%;
+         width: 100%;
+         margin: 0;
+         line-height: 18pt;
+         color: #444;
+      }
+      body {
+         background-color:midnightblue;
+         background-image: linear-gradient(lightgreen, midnightblue);
+         background-repeat: no-repeat;
+         padding: 0;
+      }
+      section {
+         background: whitesmoke;
+         margin: 2% 10%;
+         padding: 25px;
+         border-radius: 20px;
+         box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
+         display: flex;
+         flex-direction: column;
+         justify-content: space-around;
+      }
+      h1 {
+         font-size: 2rem;
+         text-align: center;
+         color: midnightblue;
+         text-shadow: 2px 2px 2px rgba(0, 24, 255, 0.5);
+         
+      }
+      section > div {
+         padding: 10px;
+         width: 50%;
+         max-width: 90%;
+         min-width: 250px;
+         margin: 1% auto;
+      }
+      section div {
+         margin: 0.5% auto;
+      }
+      div label {
+         display: block;
+      }
+      #botoes {
+         display: flex;
+         justify-content: space-around;
+         margin-top: 30px;        
+      }
+      button {
+         padding: 8px;
+         border-radius:8px;
+         color: midnightblue;
+         background: lightgreen;
+      }
+      #sumario {
+         background-color:cornsilk;
+         padding: 10px;
+         border-radius: 10px;
+      }
+      label {
+         color: midnightblue;
+      }
+      input {
+         border-radius: 4px;
+         padding: 4px;
+         border: 1px dotted lightgreen;
+      }
+      span {
+         font-weight: bold;
+         color:midnightblue;
+      }
+   </style>
+   
+</head>
+
+<body>
+   <section>
+      <h1>Cadastro de pessoas</h1>
+
+      <div id="cadastro">
+         <div>
+            <label>Nome</label>
+            <input id="nome" size="40">
+         </div>
+
+         <div>
+            <label>Sexo</label>
+            <input id="sexo" maxlength="1">
+         </div>
+
+         <div>
+            <label>Idade</label>
+            <input id="idade" type="number" min="0" max="120">
+         </div>
+
+         <div id="botoes">
+            <button id="salvar">Salvar</button>
+         </div>
+      </div>
+
+      <div id="sumario">
+         <div>Homens: <span id="qtdeHomens">0</span></div>
+         <div>Mulheres: <span id="qtdeMulheres">0</span></div>
+         <div>Maior idade: <span id="maiorIdade">0</span></div>
+         <div>Menor idade: <span id="menorIdade">0</span></div>
+         <div>Média de idade: <span id="mediaIdade">0</span></div>
+      </div>
+
+   </section>
+
+   <script>
+      'use strict'; // Modo "chato" do Javascript
+
+      const elemNome = document.querySelector('#nome');
+      const elemSexo = document.querySelector('#sexo');
+      const elemIdade = document.querySelector('#idade');
+
+      const elemSalvar = document.querySelector('#salvar');
+
+      const elemHomem = document.querySelector('#qtdeHomens');
+      const elemMulher = document.querySelector('#qtdeMulheres');
+      const elemMaior = document.querySelector('#maiorIdade');
+      const elemMenor = document.querySelector('#menorIdade');
+      const elemMedia = document.querySelector('#mediaIdade');
+
+      const cadastro = function(nome, sexo, idade) {
+         if(nome.trim() == '') {
+            alert('Informe o nome!!');
+            elemNome.focus();
+            return;
+         }
+         if(sexo !== 'M' || sexo !== 'F') {
+            alert('Sexo inválido!!');
+            elemNome.focus();
+            return;
+         }
+         if(idade <= 0 || idade >= 120) {
+            alert('Idade inválida!!');
+            elemNome.focus();
+            return;
+         }
+      }
+
+      const vet = [];
+
+      function salvar() {
+         let nome = elemNome.value;
+         let sexo = elemSexo.value;
+         let idade = parseInt(elemIdade.value);
+
+         let info = cadastro(nome, sexo, idade);
+
+         let cad = {
+            nome: nome,
+            sexo: sexo,
+            idade: idade
+         };
+
+         vet.push(cad);
+
+         for(let i of vet) {
+            let n = 0
+
+            if(sexo === 'M') {
+               elemHomem = n++;
+            }
+            if(sexo === 'F') {
+               elemMulher = n++;
+            }
+            if(idade > idade) {
+               elemMaior = idade;
+            }
+            if(idade < idade) {
+               elemMenor = idade;
+            }
+
+         elemNome.value = '';
+         elemSexo.value = '';
+         elemIdade.value = '';
+
+         elemNome.focus();
+
+         }
+
+         elemSalvar.addEventListener('click', salvar);
+
+
+
+   </script>
+
+</body>
+
+</html>
